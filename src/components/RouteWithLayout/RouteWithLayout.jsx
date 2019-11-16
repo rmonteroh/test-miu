@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
@@ -7,23 +8,23 @@ import { Route } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const RouteWithLayout = props => {
-  console.log("pruebaaaaaa");
   const { layout: Layout, component: Component, ...rest } = props;
-
+  console.log(props);
   return (
     <Route
       {...rest}
-      render={matchProps => (
+      render={() => (
         <Layout>
-          <Component {...matchProps} />
+          <Component {...props} />
         </Layout>
       )}
     />
   );
 };
+
 RouteWithLayout.propTypes = {
-  layout: PropTypes.any.isRequired,
   component: PropTypes.any.isRequired,
+  layout: PropTypes.any.isRequired,
   path: PropTypes.string
 };
 
